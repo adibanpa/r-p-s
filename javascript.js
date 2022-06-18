@@ -4,7 +4,7 @@ function computerPlay(){
     return rps[rand]
 
 }
-console.log(computerPlay())
+
 
 function playRound(playerSelection, computerSelection) {
     choice = playerSelection.toLowerCase()
@@ -14,11 +14,31 @@ function playRound(playerSelection, computerSelection) {
 
     else if (playerSelection == "rock") {
         if (computerSelection == "paper") {
-            
+            return "Computer wins"
+        }
+        else {
+            return "Player wins"
         }
     }
-  }
+    else if (playerSelection == "paper") {
+        if (computerSelection == "scissors") {
+            return "Computer wins"
+        }
+        else {
+            return "Player wins"
+        }
+    }
+    else if (playerSelection == "scissors") {
+        if (computerSelection == "rock") {
+            return "Computer wins"
+        }
+        else {
+            return "Player wins"
+        }
+    }
+}
   
-  const playerSelection = "rock";
-  const computerSelection = computerPlay();
-  console.log(playRound(playerSelection, computerSelection));
+const playerSelection = "rock";
+const computerSelection = computerPlay();
+console.log(playerSelection, computerSelection)
+console.log(playRound(playerSelection, computerSelection));
