@@ -41,7 +41,7 @@ function playRound(playerSelection, computerSelection) {
 function game(){
     let scoreplayer = 0;
     let scorecomp = 0;
-    for (let i = 0; i < 5; i++) {
+    while (scorecomp+scoreplayer<5) {
         let playerSelection = prompt("Rock, paper, or scissors?")
         let computerSelection = computerPlay();
         console.log(playerSelection, computerSelection);
@@ -57,3 +57,5 @@ function game(){
         console.log(scoreplayer, scorecomp)
     }
 }
+
+game()
