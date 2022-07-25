@@ -74,7 +74,6 @@ buttons.forEach((button) => {
         }
 
         else {
-            console.log(button.id);
             let playerSelection = button.id;
             let computerSelection = computerPlay();
             let result = playRound(playerSelection, computerSelection);
