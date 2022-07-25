@@ -42,6 +42,22 @@ function playRound(playerSelection, computerSelection) {
 let scoreplayer = 0;
 let scorecomp = 0;
 
+const container = document.querySelector('#container');
+const psel = document.createElement('div');
+psel.classList.add('psel');
+container.appendChild(psel);
+
+const csel = document.createElement('div');
+csel.classList.add('csel');
+container.appendChild(csel);
+
+const res = document.createElement('div');
+res.classList.add('res');
+container.appendChild(res);
+
+const scores = document.createElement('div');
+scores.classList.add('scores');
+container.appendChild(scores);
 
 // buttons is a node list. It looks and acts much like an array.
 const buttons = document.querySelectorAll('button');
@@ -51,31 +67,30 @@ buttons.forEach((button) => {
 
     // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
-        console.log(button.id);
-        let playerSelection = button.id;
-        let computerSelection = computerPlay();
-        console.log(playerSelection, computerSelection);
-        let result = playRound(playerSelection, computerSelection);
-        console.log(result)
-        if (result == "Computer wins"){
-            scorecomp++;
-        }
-        else if (result == "Player wins"){
-            scoreplayer++; 
-        }
-        console.log("score: ")
-        console.log(scoreplayer, scorecomp)
         if (button.id == "rst"){
             scoreplayer = 0;
             scorecomp = 0;
+            scores.textContent = "Scores: Player: 0 Computer: 0"        
+        }
+
+        else {
+            console.log(button.id);
+            let playerSelection = button.id;
+            let computerSelection = computerPlay();
+            let result = playRound(playerSelection, computerSelection);
+            if (result == "Computer wins"){
+                scorecomp++;
+            }
+            else if (result == "Player wins"){
+                scoreplayer++; 
+            }
+
+            
+            psel.textContent = `Player Selection: ${button.id.toUpperCase()}`         
+            csel.textContent = `Computer Selection: ${computerSelection.toUpperCase()}`
+            res.textContent = `Result: ${result}`
+            scores.textContent = `Scores: Player ${scoreplayer} Computer: ${scorecomp}`
         }
     });
 });
-
-    //while (scorecomp+scoreplayer<5) {
-        //let playerSelection = prompt("Rock, paper, or scissors?")
-        
-  //  }
-//}
-
 //game()
